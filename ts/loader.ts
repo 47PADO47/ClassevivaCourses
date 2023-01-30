@@ -602,9 +602,11 @@ async function exec(step: Step) {
   }
 }
 
-async function fetchImport(url: string) {
+async function fetchImport(fileUrl: string) {
   try {
-    const response = await fetch(url);
+    const url = new URL(fileUrl);
+
+    const response = await fetch(url.toString());
     const scriptText = await response.text();
 
     // Remove all import and export statements
@@ -616,6 +618,7 @@ async function fetchImport(url: string) {
 
     // Append the new script tag to the document head
     document.head.appendChild(newScript);
+    console.log('[+]', `Loaded file ${url.pathname}`);
   } catch (error) {
     console.error(`Error fetching and importing script: ${error}`);
   }
