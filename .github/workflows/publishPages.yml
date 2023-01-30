@@ -27,3 +27,6 @@ jobs:
           git config user.email 62028267+47PADO47@users.noreply.github.com
       - name: Generate
         run: npm run publish
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
