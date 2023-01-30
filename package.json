@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "publish": "npm run build && npx wrangler pages publish . --commit-dirty=true",
+    "publish": "npm run build && npx wrangler pages publish webcvv --commit-dirty=true",
     "build": "npx tsc && node format.js"
   },
   "devDependencies": {
