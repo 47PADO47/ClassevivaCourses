@@ -26,11 +26,20 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.6.0/highlight.min.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const code = document.getElementsByTagName('code')[0];
-            code.innerText = code.innerText.replace('{hostname}', location.host);
+            for (const code of document.getElementsByTagName('code')) {
+                code.innerText = code.innerText.replace('{hostname}', location.host);
+            };
 
             hljs.highlightAll();
-        })
+        });
+
+        function generate() {
+            for (const code of document.getElementsByTagName('code')) {
+                code.innerText = `javascript:(function () {${code.innerText}})();`;
+            };
+
+            hljs.highlightAll();
+        };
     </script>
 </head>
 
@@ -70,8 +79,11 @@
             <div id="body" class="form-control"></div>
             
             <pre>
-                <code class="language-js">eval(await (await fetch('https://{hostname}/dist/loader.js')).text());</code>
+                <code class="language-js">eval(await (await fetch('https://{hostname}/dist/loader.js')).text());</button></code>
+                <code class="language-js">fetch('https://{hostname}/dist/loader.js').then(r => r.text()).then(eval);</code>
             </pre>
+
+            <button class="btn btn-primary" onclick="generate()">Generate 🔃</button>
         </center>
     </div>
 
