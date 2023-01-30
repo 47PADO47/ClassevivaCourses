@@ -3,7 +3,7 @@ name: Publish pages
 on:
   push:
     branches:
-      - main
+      - master
   repository_dispatch:
 
 jobs:
