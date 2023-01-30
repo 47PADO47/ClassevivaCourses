@@ -26,6 +26,7 @@ type Step = {
 interface ExtendedElement extends HTMLElement {
   value?: string;
   for?: string;
+  disabled?: boolean;
 };
 
 const steps: Step[] = [
@@ -311,7 +312,10 @@ const steps: Step[] = [
             }
           ]);
 
-          document.getElementById(CVVMINUTES).addEventListener('click', async () => {
+          const MinutesButton = document.getElementById(CVVMINUTES) as ExtendedElement;
+          MinutesButton.addEventListener('click', async () => {
+            updateButton(true, MinutesButton);
+
             const min: ExtendedElement = document.getElementById(CVVMINUTES.split('_')[1]);
             const T: ExtendedElement & { value?: safetyCourseTarget } = document.getElementById(CVVMINUTES.split('_').pop());
             const minutes = !isNaN(parseInt(min.value)) ? parseInt(min.value) : 0;
@@ -329,6 +333,8 @@ const steps: Step[] = [
             } catch (error) {
               Logger.error(`Could not add ${minutes} minutes to course:`, error);
             }
+
+            updateButton(false, MinutesButton);
           });
 
           const videos: string[] = ["pre"];
@@ -354,7 +360,10 @@ const steps: Step[] = [
             }
           ]);
 
-          document.getElementById(CVVVIDEOS).addEventListener('click', async () => {
+          const VideosButton = document.getElementById(CVVVIDEOS) as ExtendedElement;
+          VideosButton.addEventListener('click', async () => {
+            updateButton(true, VideosButton);
+
             let watchedVideos = [];
             for (const video of videos) {
               try {
@@ -375,7 +384,9 @@ const steps: Step[] = [
                 type: 'success',
                 dimissable: true,
               }
-            })
+            });
+
+            updateButton(false, VideosButton);
           });
 
           const exercises = [{"numero":"01.03.d1","domanda":"1","risposta":"1"},{"numero":"01.06.d1","domanda":"1","risposta":"2"},{"numero":"01.10.d1","domanda":"1","risposta":"1"},{"numero":"01.14.d1","domanda":"1","risposta":"3"},{"numero":"01.18.d1","domanda":"1","risposta":"2"}];
@@ -389,7 +400,10 @@ const steps: Step[] = [
             }
           ]);
 
-          document.getElementById(CVVEXERCISES).addEventListener('click', async () => {
+          const ExercisesButton = document.getElementById(CVVEXERCISES) as ExtendedElement;
+          ExercisesButton.addEventListener('click', async () => {
+            updateButton(true, ExercisesButton);
+
             let completedAnswers = [];
             for (const answer of exercises) {
               try {
@@ -416,7 +430,9 @@ const steps: Step[] = [
                 type: 'success',
                 dimissable: true,
               }
-            })
+            });
+
+            updateButton(false, ExercisesButton);
           });
 
           const finalAnswers = [{"numero":"d5","domanda":"5","risposta":"1"},{"numero":"d1","domanda":"1","risposta":"3"},{"numero":"d7","domanda":"7","risposta":"2"},{"numero":"d6","domanda":"6","risposta":"1"},{"numero":"d2","domanda":"2","risposta":"1"},{"numero":"d3","domanda":"3","risposta":"3"},{"numero":"d8","domanda":"8","risposta":"1"},{"numero":"d10","domanda":"10","risposta":"2"},{"numero":"d4","domanda":"4","risposta":"3"},{"numero":"d9","domanda":"9","risposta":"3"}];
@@ -430,7 +446,10 @@ const steps: Step[] = [
             }
           ]);
 
-          document.getElementById(CVVFINALANSWERS).addEventListener('click', async () => {
+          const ExamButton = document.getElementById(CVVFINALANSWERS) as ExtendedElement;
+          ExamButton.addEventListener('click', async () => {
+            updateButton(false, ExamButton);
+
             try {
               await window.classeviva.addSafetyCourseMinutes('tst', window.keyManager.getRandomInt(10, 40));
               await window.classeviva.addSafetyCourseMinutes('ind', window.keyManager.getRandomInt(8, 20));
@@ -469,12 +488,20 @@ const steps: Step[] = [
                 dimissable: true,
               }
             })
+
+            updateButton(false, ExamButton);
           });
 
           return true;
       }
   }
 ];
+
+function updateButton(disabled: boolean, button: ExtendedElement) {
+  button.disabled = disabled;
+  /*if (disabled) button.classList.add('disabled');
+  else button.classList.remove('disabled')*/
+}
 
 async function updatePrivacyPolicy() {
 try {
