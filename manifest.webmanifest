@@ -2,11 +2,11 @@
     "short_name": "Classeviva Manager",
     "name": "Classeviva Manager",
     "icons": [
-    {
-    "src": "https://web.spaggiari.eu/favicon.ico",
-    "type": "image/png",
-    "sizes": "96x96"
-    }
+        {
+            "src": "https://web.spaggiari.eu/favicon.ico",
+            "type": "image/png",
+            "sizes": "96x96"
+        }
     ],
     "start_url": ".",
     "background_color": "#ff0000",
@@ -15,18 +15,18 @@
     "theme_color": "#ff0000",
     "description": "😈",
     "related_applications": [
-    {
-    "platform": "webapp",
-    "url": "https://webcvv.pages.dev/manifest.json"
-    }
+        {
+            "platform": "webapp",
+            "url": "https://webcvv.pages.dev/manifest.json"
+        }
     ],
     "prefer_related_applications": true,
     "url_handlers": [
-    {
-    "origin": "https://webcvv.pages.dev"
-    },
-    {
-    "origin": "https://*.webcvv.pages.dev"
-    }
+        {
+            "origin": "https://webcvv.pages.dev"
+        },
+        {
+            "origin": "https://*.webcvv.pages.dev"
+        }
     ]
-    }
+}
