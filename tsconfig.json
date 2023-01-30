@@ -1,0 +1,19 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "ts",
+    "downlevelIteration": true,
+    "importHelpers": false,
+    "module": "es2020",
+    "outDir": "./dist/",
+    "sourceMap": false,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitAny": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "target": "es6",
+    "lib": ["es2017", "dom"]
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "scripts": {
+    "publish": "npm run build && npx wrangler pages publish . --commit-dirty=true",
+    "build": "npx tsc && node format.js"
+  },
+  "devDependencies": {
+    "tslib": "^2.4.1",
+    "typescript": "^4.9.4"
+  }
+}
