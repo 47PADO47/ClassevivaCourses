@@ -26,7 +26,7 @@ console.log(imports);
 
 // Replace each import statement with the fetchImport function
 for (const filename of imports) {
-    data = data.replace(importRegex, `(async () => { if (this.${filename.split('.')[0]}) return; await fetchImport('${httpPath}${filename.endsWith('.js') ? filename : filename + '.js'}');console.log('[+]', 'Loaded file ${filename}')})();\n`);
+    data = data.replace(importRegex, `(async () => { if (!!this.${filename.split('.')[0]}) return; await fetchImport('${httpPath}${filename.endsWith('.js') ? filename : filename + '.js'}');})();\n`);
 }
 
 //data = data.split('\n').filter(x => x.length > 0).join('');
