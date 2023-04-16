@@ -1,0 +1,1 @@
+export type AlertData = { message?: string, type: 'success' | 'danger' | 'info', dimissable?: boolean };
