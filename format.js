@@ -25,13 +25,20 @@ while ((match = regexG.exec(data)) !== null) {
 console.log(imports);
 
 // Replace each import statement with the fetchImport function
+const awaiter = data.split('\n').filter((_, i) => i<9).join('\n').length;
+let newData = data.slice(0, awaiter) + `\n(async () => {\n`;
+
 for (const filename of imports) {
-    data = data.replace(importRegex, `(async () => { if (!!this.${filename.split('.')[0]}) return; await fetchImport('${httpPath}${filename.endsWith('.js') ? filename : filename + '.js'}');})();\n`);
-}
+    newData += `\nif (!this.${filename.split('/').pop()}) await fetchImport('${httpPath}${filename.endsWith('.js') ? filename : filename + '.js'}');\n`;
+    data = data.replace(importRegex, '');
+};
+newData += `\n})();\n`;
+
+newData += data.slice(awaiter);
 
 //data = data.split('\n').filter(x => x.length > 0).join('');
 data.length--;
-fs.writeFileSync(file, data);
+fs.writeFileSync(file, newData);
 
 console.log('Finished');
 
