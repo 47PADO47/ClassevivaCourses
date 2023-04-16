@@ -1,55 +1,4 @@
-import Logger from "Logger";
-
-interface ClassOptions {
-  cid?: string;
-  uid?: string;
-  pwd?: string;
-  pin?: string;
-  target?: string;
-}
-
-interface ClassUser {
-  cid: string;
-  cognome: string;
-  nome: string;
-  id: number;
-  type: string;
-}
-
-interface FetchOptions {
-  url: string;
-  path?: string;
-  method?: string;
-  body?: string;
-  headers?: HeadersInit;
-  json?: boolean;
-}
-
-type prodotto =
-  | "set"
-  | "cvv"
-  | "oas"
-  | "ldt"
-  | "sdg"
-  | "acd"
-  | "vrd"
-  | "e2c"
-  | "cvp";
-
-type safetyCourseTarget = "vid" | "sli" | "tst" | "nor" | "ind";
-
-type safetyCourseAnswer = {
-  lesson: number | string;
-  question: number | string;
-  resultNumber: number | string;
-  type: "tst" | "tsf";
-};
-
-export type {
-  prodotto,
-  safetyCourseAnswer,
-  safetyCourseTarget,
-}
+import { ClassOptions, ClassUser, FetchOptions, prodotto, safetyCourseAnswer, safetyCourseTarget } from "../types/Classeviva";
 
 class Classeviva {
   private readonly data: ClassOptions;
@@ -102,13 +51,13 @@ class Classeviva {
   setServerUrl(url: string) {
     if (!url) return;
     this.serverUrl = url;
-    Logger.info('Set server url to:', url);
+    window.logger.info('Set server url to:', url);
   }
 
   setCourseId(id: string) {
     if (!id) return;
     this.courseId = id;
-    Logger.info('Set course id to:', id);
+    window.logger.info('Set course id to:', id);
   }
 
   async login(data: ClassOptions = this.data): Promise<{ result: boolean; cause: string; } | { result: boolean; cause?: undefined; }> {
@@ -244,18 +193,18 @@ class Classeviva {
   }
 
   async getDocumentionList(
-    prodotto: prodotto | "" = "",
+    prod: prodotto | "" = "",
     cerca: string = ""
   ): Promise<any> {
     const response = await this.fetch({
-      url: `documentazione.xhr.php?act=get_faq_autocomplete&prodotto=${prodotto}&find=${cerca}`,
+      url: `documentazione.xhr.php?act=get_faq_autocomplete&prodotto=${prod}&find=${cerca}`,
       path: "acc",
     });
     return response ?? {};
   }
 
-  async getDocumentationUrl(prodotto: prodotto, id: number): Promise<string> {
-    return `${this.baseUrl("acc")}documentazione.php?prodotto=${prodotto}&cerca=d:${id}`;
+  async getDocumentationUrl(prod: prodotto, id: number): Promise<string> {
+    return `${this.baseUrl("acc")}documentazione.php?prodotto=${prod}&cerca=d:${id}`;
   }
 
   async getAvatar(): Promise<any> {
