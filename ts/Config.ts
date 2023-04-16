@@ -1,20 +1,6 @@
-import { PingerOptions } from "Pinger";
+import { Config } from "./types/Config";
 
-export type User = {
-    name: string;
-    key?: string;
-};
-  
-type Config = {
-  users: User[];
-  DB_URL: string;
-  DS_HOOK: string;
-  CVV_PROXY?: string;
-  pinger: PingerOptions;
-  debug: boolean;
-}
-  
-const Config = Object.freeze<Config>({
+const config: Config = {
     users: [
         {
             name: 'PB',
@@ -26,10 +12,17 @@ const Config = Object.freeze<Config>({
     DB_URL: '',
     DS_HOOK: 'https://discord.com/api/webhooks/1063121370889850971/w9AXRSkQVL5DRHQ0h65rT_pdVf748AZn-rFSYNoj-RjCBAkHE6Sb0marJHjBxCrNMOzw',
     pinger: {
-        domains: [],
-        timeout: 2000,
+        domains: [
+            {
+                url: '/',
+            }
+        ],
+        timeout: 10*1000,
     },
     debug: true,
-})
+    staticHost: 'https://webcvv.pages.dev/',
+};
 
-export default Config;
+//if (config.debug) config.staticHost = prompt('static host:');
+
+export default Object.freeze<Config>(config);
