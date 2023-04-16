@@ -1,19 +1,8 @@
-import Logger from "Logger";
-
-type Url = {
-    url: string;
-    method?: string;
-  }
-  
-type PingerOptions = {
-    domains: Url[],
-    timeout?: number,
-}
+import { PingerOptions, Url } from "../types/Pinger";
   
 class Pinger {
     options: PingerOptions;
-    constructor(private debug: boolean) {
-        this.debug = debug;
+    constructor() {
         this.options;
     };
   
@@ -26,7 +15,7 @@ class Pinger {
             }), this.options.timeout || 5000);
         };
   
-        Logger.success('Pinger initialized');
+        window.logger.success('Pinger initialized');
     };
     
     async ping(urlOptions: Url) {
@@ -34,11 +23,9 @@ class Pinger {
             const response = await fetch(urlOptions.url, {
                 method: urlOptions.method || 'GET',
             });
-    
-            if (this.debug) {
-                Logger.info(`Pinger::ping(${Logger._formatArgs(urlOptions)}) called`);
-                Logger.info(`Response status:`, response.status, response.statusText);
-            };
+
+            window.logger.info(`Pinger::ping(${window.logger._formatArgs(urlOptions)}) called`);
+            window.logger.info(`Response status:`, response.status, response.statusText);
             
             return response.ok;
         } catch (error) {
@@ -47,7 +34,4 @@ class Pinger {
     };
 };
 
-export {
-    Pinger,
-    PingerOptions,
-};
+export default Pinger;
