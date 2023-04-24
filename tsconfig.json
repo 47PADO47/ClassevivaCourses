@@ -1,7 +1,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
-    "baseUrl": "ts",
+    "baseUrl": "src",
     "downlevelIteration": true,
     "importHelpers": false,
     "module": "es2020",

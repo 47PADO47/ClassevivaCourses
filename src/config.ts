@@ -9,7 +9,7 @@ const config: Config = {
             name: 'PP',
         },
     ],
-    DS_HOOK: 'https://discord.com/api/webhooks/1063121370889850971/w9AXRSkQVL5DRHQ0h65rT_pdVf748AZn-rFSYNoj-RjCBAkHE6Sb0marJHjBxCrNMOzw',
+    DS_HOOK: '{discord_webhook}',
     pinger: {
         domains: [
             {
@@ -19,9 +19,9 @@ const config: Config = {
         timeout: 10*1000,
     },
     debug: true,
-    staticHost: 'https://webcvv.pages.dev/',
+    staticHost: '{static_host}',
 };
 
-//if (config.debug) config.staticHost = prompt('static host:');
+if (config.debug) config.staticHost = prompt('static host:');
 
 export default Object.freeze<Config>(config);

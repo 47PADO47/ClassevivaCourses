@@ -1,6 +1,6 @@
 import Logger from "core/Logger";
 import Pinger from "core/Pinger";
-import config from "Config";
+import config from "config";
 import Classeviva from "core/Classeviva";
 import CookieManager from "core/CookieManager";
 import KeyManager from "core/KeyManager";
