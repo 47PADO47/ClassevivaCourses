@@ -29,7 +29,7 @@ const steps: Step[] = [
         });
 
         window.classeviva = new Classeviva({
-          target: 'set'
+          target: 'sct'
         });
         window.cookieManager = new CookieManager();
         window.pinger = new Pinger();
