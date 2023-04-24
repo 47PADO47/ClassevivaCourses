@@ -16,5 +16,7 @@ for (const replace of toReplace) {
     content = content.replace(`{${replace}}`, Base64.decode(config[replace]));
 };
 
-console.log(content);
 fs.writeFileSync(file, content);
+console.log('[+]', 'Done');
+
+console.log(fs.readFileSync(file, 'utf-8'));
