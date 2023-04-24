@@ -1,7 +1,7 @@
 {
   "scripts": {
     "publish": "npx wrangler pages publish . --project-name=webcvv --branch=production",
-    "preview": "npm run build && npx wrangler pages publish . --project-name=webcvv --commit-dirty=true",
+    "preview": "npm run build && npm run config:fill && npx wrangler pages publish .  --branch=production --project-name=webcvv --commit-dirty=true",
     "build": "npx tsc && node scripts/format.js",
     "config:fill": "node scripts/fillConfig.js"
   },
