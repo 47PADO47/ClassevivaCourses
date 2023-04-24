@@ -86,8 +86,10 @@ class Classeviva {
       .json()
       .catch(() => this.error("Could not parse JSON"));
 
-    if (json?.error && json.error?.length > 0) return this.error(json.error);  
-    if (!json?.data?.auth?.accountInfo) return this.error("Login failed (no account info)");
+    if (json?.error && json.error?.length > 0) return this.error(json.error);
+    if (!json?.data?.auth) return this.error('No auth data');
+    if (json.data.auth?.errors?.length > 0) return this.error(json.data.auth?.errors[0]);
+    if (!json.data.auth.accountInfo) return this.error("Login failed (no account info)");
     this.user = json.data.auth.accountInfo;
     this.authorized = true;
 
