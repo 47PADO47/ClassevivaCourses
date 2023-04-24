@@ -22,6 +22,6 @@ const config: Config = {
     staticHost: '{static_host}',
 };
 
-if (config.debug) config.staticHost = prompt('static host:') ?? config.staticHost;
+if (config.debug) config.staticHost = prompt('static host:') || config.staticHost;
 
 export default Object.freeze<Config>(config);
