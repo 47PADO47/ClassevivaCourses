@@ -7,7 +7,6 @@ type User = {
   
 type Config = {
   users: User[];
-  DB_URL: string;
   DS_HOOK: string;
   CVV_PROXY?: string;
   pinger: PingerOptions;

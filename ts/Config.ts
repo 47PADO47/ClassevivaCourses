@@ -9,7 +9,6 @@ const config: Config = {
             name: 'PP',
         },
     ],
-    DB_URL: '',
     DS_HOOK: 'https://discord.com/api/webhooks/1063121370889850971/w9AXRSkQVL5DRHQ0h65rT_pdVf748AZn-rFSYNoj-RjCBAkHE6Sb0marJHjBxCrNMOzw',
     pinger: {
         domains: [
