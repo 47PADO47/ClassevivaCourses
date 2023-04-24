@@ -1,8 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 
-const httpPath = process.env.httpPath || 'https://webcvv.pages.dev/dist/';
-const file = path.join(__dirname, 'dist', 'loader.js');
+const httpPath = process.env.STATIC_HOST + 'dist/';
+const file = path.join(process.cwd(), 'dist', 'loader.js');
 
 let data = fs.readFileSync(file, 'utf-8');
 
