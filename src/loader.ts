@@ -10,7 +10,6 @@ import Handler from "core/Handler";
 import Utils from "core/Utils";
 import Course from "core/CvvCourse";
 
-import KeyHandler from "handlers/key";
 import CredentialsHandler from "handlers/credentials";
 import ErrorHandler from "handlers/error";
 import CourseIdHandler from "handlers/courseId";
@@ -74,16 +73,6 @@ const steps: Step[] = [
             text: 'Loading'
           });
           return true;
-      },
-  },
-  {
-      name: 'checkKey',
-      execute: async () => {
-          const key = window.cookieManager.getCookie('key');
-          if (key) return await window.keyManager.isValid(key);
-
-          const handler = new KeyHandler();
-          return await window.utils.waitForButtonPress(handler.buttonId, handler.handle);
       },
   },
   {
