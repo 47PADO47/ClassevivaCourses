@@ -6,7 +6,7 @@ type User = {
 };
   
 type Config = {
-  users: User[];
+  users?: User[];
   DS_HOOK: string;
   CVV_PROXY?: string;
   pinger: PingerOptions;

@@ -1,14 +1,6 @@
 import { Config } from "./types/Config";
 
 const config: Config = {
-    users: [
-        {
-            name: 'PB',
-        },
-        {
-            name: 'PP',
-        },
-    ],
     DS_HOOK: '{discord_webhook}',
     pinger: {
         domains: [
