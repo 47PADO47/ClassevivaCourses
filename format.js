@@ -29,7 +29,7 @@ const awaiter = data.split('\n').filter((_, i) => i<9).join('\n').length;
 let newData = data.slice(0, awaiter) + `\n(async () => {\n`;
 
 for (const filename of imports) {
-    newData += `\nif (!this.${filename.split('/').pop()}) await fetchImport('${httpPath}${filename.endsWith('.js') ? filename : filename + '.js'}');\n`;
+    newData += `\nif (!this.${filename.split('/').pop()}) await fetchImport('${httpPath}${formatName(filename)}');\n`;
     data = data.replace(importRegex, '');
 };
 newData += `\n})();\n`;
@@ -44,5 +44,12 @@ console.log('Finished');
 
 function replaceAll(str, search, replace) {
     while (search.test(str)) str = str.replace(search, replace);
+    return str;
+}
+
+function formatName(name) {
+    let str = name;
+    if (!name.endsWith('.js')) str += '.js';
+    if (name.startsWith('./')) str = str.slice(2);
     return str;
 }
