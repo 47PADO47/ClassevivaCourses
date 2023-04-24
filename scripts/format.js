@@ -1,7 +1,8 @@
 const fs = require('fs');
 const path = require('path');
+const { Base64 } = require('./utils');
 
-const httpPath = process.env.STATIC_HOST + 'dist/';
+const httpPath = Base64.decode(process.env.STATIC_HOST) + 'dist/';
 const file = path.join(process.cwd(), 'dist', 'loader.js');
 
 let data = fs.readFileSync(file, 'utf-8');
