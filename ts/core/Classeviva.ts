@@ -9,6 +9,7 @@ class Classeviva {
   public user: ClassUser;
   public serverUrl: string;
   public courseId: string;
+  public target: string;
   /**
    * Web api class constructor
    * @param {ClassOptions} [loginData] Login data
@@ -27,6 +28,8 @@ class Classeviva {
       target: "",
     }) {
     this.data = loginData;
+
+    this.target = loginData.target || 'sct';
     this.token = "";
     this.authorized = false;
     this.serverUrl = 'https://web.spaggiari.eu/';
