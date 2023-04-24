@@ -13,7 +13,6 @@ class KeyHandler extends Handler {
 
     async handle({ button }: buttonPressCallbackData) {
         const input: ExtendedElement = document.getElementById(button.id.split('_').pop());
-        console.log(input);
         const key = input.value;
 
         const res = await window.keyManager.isValid(key);
