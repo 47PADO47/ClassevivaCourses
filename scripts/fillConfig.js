@@ -1,8 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-console.log(process.env)
-
 const config = {
     discord_webhook: process.env.DISCORD_WEBHOOK,
     static_host: process.env.STATIC_HOST,
@@ -13,8 +11,10 @@ var content = fs.readFileSync(file, 'utf-8');
 
 const toReplace = Object.keys(config);
 for (const replace of toReplace) {
-    console.log('[+]', `Replacing ${replace}`);
+    console.log('[+]', `Replacing ${replace}`, config[replace]);
     content = content.replace(`{${replace}}`, config[replace]);
 };
+
+console.log(content)
 
 fs.writeFileSync(file, content);
