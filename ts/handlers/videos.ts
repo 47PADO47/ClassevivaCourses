@@ -11,8 +11,6 @@ class VideosHandler extends Handler {
     };
 
     async handle() {
-        window.utils.updateButton(true, this.element);
-
         let watchedVideos = [];
         for (const video of window.course.videos) {
           try {
@@ -34,8 +32,6 @@ class VideosHandler extends Handler {
             dimissable: true,
           }
         });
-
-        window.utils.updateButton(false, this.element);
     };
 
     private createForm() {

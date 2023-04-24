@@ -23,7 +23,6 @@ class FinalTestHandler extends Handler {
     }
 
     async handle() {
-        window.utils.updateButton(false, this.element);
         this.addMinutes();
 
         let completedAnswers = [];
@@ -53,8 +52,6 @@ class FinalTestHandler extends Handler {
             dimissable: true,
           }
         })
-
-        window.utils.updateButton(false, this.element);
     };
 
     private createForm() {

@@ -18,7 +18,15 @@ class Handler {
     }
 
     async registerInteraction(element: ExtendedElement) {
-        element.addEventListener('click', async () => await this.handle({}));
+        element.addEventListener('click', async () => {
+            try {
+                window.utils.updateButton(true, element);
+                await this.handle({});
+                window.utils.updateButton(false, element);
+            } catch (error) {
+                window.logger.error(`Handler "${this.name}" encountered and error executing interaction`, error);
+            }
+        });
         return this;
     }
 }

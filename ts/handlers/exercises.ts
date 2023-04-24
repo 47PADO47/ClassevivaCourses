@@ -11,8 +11,6 @@ class ExercisesHandler extends Handler {
     };
 
     async handle() {
-        window.utils.updateButton(true, this.element);
-
         let completedAnswers = [];
         for (const answer of window.course.exercises) {
           try {
@@ -40,8 +38,6 @@ class ExercisesHandler extends Handler {
             dimissable: true,
           }
         });
-
-        window.utils.updateButton(false, this.element);
     };
 
     private createForm() {

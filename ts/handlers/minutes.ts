@@ -14,8 +14,6 @@ class MinutesHandler extends Handler {
     };
 
     async handle() {
-        window.utils.updateButton(true, this.element);
-
         const min: ExtendedElement = document.getElementById(this.element.id.split('_')[1]);
         const T: ExtendedElement & { value?: safetyCourseTarget } = document.getElementById(this.element.id.split('_').pop());
         const minutes = !isNaN(parseInt(min.value)) ? parseInt(min.value) : 0;
@@ -33,8 +31,6 @@ class MinutesHandler extends Handler {
         } catch (error) {
           window.logger.error(`Could not add ${minutes} minutes to course:`, error);
         }
-
-        window.utils.updateButton(false, this.element);
       };
 
     private createForm() {
