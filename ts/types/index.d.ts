@@ -1,5 +1,5 @@
 import Pinger from "core/Pinger";
-import { Config } from "types/config";
+import { Config } from "types/Config";
 import Classeviva from "core/Classeviva";
 import CookieManager from "core/CookieManager";
 import KeyManager from "core/KeyManager";
