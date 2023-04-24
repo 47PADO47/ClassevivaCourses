@@ -23,7 +23,8 @@ class Utils {
         window.cookieManager.deleteCookie('PHPSESSID');
 
         window.logger.success('Logged out');
-        location.reload();
+        this.setCvvTarget(window.classeviva.target);
+        //location.reload();
     };
 
     async waitForButtonPress(buttonId: string, callback: waitForButtonPressCallback): Promise<boolean> {
@@ -108,6 +109,18 @@ class Utils {
 
         spinnerTitle.hidden = hidden;
         spinner.hidden = hidden;
+    }
+
+    setCvvTarget(target: string) {
+        window.cookieManager.setCookie({
+            name: 'LAST_REQUESTED_TARGET',
+            value: target,
+        });
+
+        const searchParams = new URLSearchParams(location.search);
+        searchParams.set('target', target);
+
+        location.search = searchParams.toString();
     }
 };
 
