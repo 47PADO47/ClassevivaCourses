@@ -4,7 +4,9 @@
 ## About
 ClassevivaCourses is a static web page built with TypeScript that runs on the [spaggiari electronic register](https://web.spaggiari.eu/) and allows you to complete almost every course on it. It modifies the DOM, creating an HTML dashboard, and can be injected with the following snippet:
 
-`javascript:(function () {eval(await (await fetch('{your static host}/dist/loader.js')).text());})();`
+```javascript
+javascript:(function () {eval(await (await fetch('{your static host}/dist/loader.js')).text());})();
+```
 
 ## Config
 
