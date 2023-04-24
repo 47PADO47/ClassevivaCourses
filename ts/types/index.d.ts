@@ -1,5 +1,5 @@
 import Pinger from "core/Pinger";
-import Config from "config";
+import { Config } from "./config";
 import Classeviva from "core/Classeviva";
 import CookieManager from "core/CookieManager";
 import KeyManager from "core/KeyManager";
@@ -12,7 +12,7 @@ declare global {
     interface Window {
         classeviva: Classeviva;
         cookieManager: CookieManager;
-        config: typeof Config;
+        config: Config;
         pinger: Pinger;
         keyManager: KeyManager;
         notificationManager: NotificationManager;
