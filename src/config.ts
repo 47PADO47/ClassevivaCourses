@@ -18,7 +18,7 @@ const config: Config = {
         ],
         timeout: 10*1000,
     },
-    debug: true,
+    debug: false,
     staticHost: '{static_host}',
 };
 
