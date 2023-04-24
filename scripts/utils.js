@@ -1,3 +1,6 @@
+const fs = require('fs');
+const path = require('path');
+
 class Base64 {
     static encode(str) {
       const buff = Buffer.from(str, 'utf-8');
@@ -10,6 +13,25 @@ class Base64 {
     }
 }
 
+const exists = (path) => new Promise((resolve) => fs.access(path, fs.constants.F_OK, err => resolve(!err)));
+
+async function loadEnv() {
+  const envPath = path.join(process.cwd(), '.env');
+
+  if (!await exists(envPath)) return {};
+
+  const envFile = fs.readFileSync(envPath, 'utf8');
+  const envLines = envFile.split('\n');
+
+  for (const line of envLines) {
+    const [key, value] = line.split('=');
+    process.env[key.trim()] = Base64.encode(value.trim());
+  };
+  
+  return process.env;
+}
+
 module.exports = {
     Base64,
+    loadEnv,
 }
