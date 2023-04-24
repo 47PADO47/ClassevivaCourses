@@ -1,6 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
+console.log(process.env)
 
 const config = {
     discord_webhook: process.env.DISCORD_WEBHOOK,
