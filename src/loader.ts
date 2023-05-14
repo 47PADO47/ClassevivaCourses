@@ -63,7 +63,7 @@ const steps: Step[] = [
       name: 'updateHtml',
       doNotResetBody: true,
       execute: async () => {
-          const html = await (await fetch(window.config.staticHost + 'dashboard')).text();
+          const html = await (await fetch(window.config.staticHost + 'src/dashboard')).text();
           
           document.body.innerHTML = html;
           document.title = "CVV MANAGER";
