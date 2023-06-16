@@ -34,7 +34,7 @@
 
         function generate() {
             for (const code of document.getElementsByTagName('code')) {
-                code.innerText = `javascript:(function () {${code.innerText}})();`;
+                code.innerText = `javascript:(${code.innerText.includes('await') ? 'async ' : ''}function () {${code.innerText}})();`;
             };
 
             hljs.highlightAll();
