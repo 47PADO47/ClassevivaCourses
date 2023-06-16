@@ -38,18 +38,23 @@ const steps: Step[] = [
         window.cookieManager.init(document);
         window.pinger.init(window.config.pinger);
         window.keyManager.init(window.config.users);
-        window.classeviva.setServerUrl(window.config.CVV_PROXY);
 
-        if (window.config.CVV_PROXY && !(await window.pinger.ping({
+        if (window.config.CVV_PROXY) {
+          window.classeviva.setServerUrl(window.config.CVV_PROXY);
+
+          const proxyOnline = await window.pinger.ping({
             url: window.config.CVV_PROXY,
-        }))) {
-            window.notificationManager.documentAlert({
-                type: 'danger',
-                message: 'Failed to connect to CVV_PROXY',
-            });
-            window.logger.error('Failed to connect to CVV_PROXY', window.config.CVV_PROXY);
+          });
+          
+          if (!proxyOnline) {
+              window.notificationManager.documentAlert({
+                  type: 'danger',
+                  message: 'Failed to connect to CVV_PROXY',
+              });
+              window.logger.error('Failed to connect to CVV_PROXY', window.config.CVV_PROXY);
 
-            return false;
+              return false;
+          };
         };
 
         window.keyManager.updateKeys(window.notificationManager.sendDiscordNotification);
