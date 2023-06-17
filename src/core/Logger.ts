@@ -1,3 +1,5 @@
+type logLevel = 'success' | 'info' | 'error';
+
 class Logger {
     success (...message: any[]) {
         this._log('success', ...message);
@@ -28,7 +30,7 @@ class Logger {
         });
     }
 
-    private _log(level: string, ...data: any[]) {
+    private _log(level: logLevel, ...data: any[]) {
         if (!window.config.debug) return;
 
         let color;
