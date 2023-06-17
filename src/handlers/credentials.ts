@@ -13,7 +13,7 @@ class CredentialsHandler extends Handler {
 
     
     async handle({ button }: buttonPressCallbackData) {
-        const credentials = {};
+        const credentials: Record<string, string> = {};
         
         button.id.split('_')
         .filter((_, i) => i !== 0)
