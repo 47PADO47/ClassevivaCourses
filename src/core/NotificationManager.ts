@@ -37,7 +37,7 @@ class NotificationManager {
           const button = document.createElement('button');
           button.type = 'button';
           button.className = 'btn-close';
-          button["data-bs-dismiss"] = 'alert';
+          button.setAttribute('data-bs-dismiss', 'alert');
           button.ariaLabel = 'Close';
     
           alert.appendChild(button);
