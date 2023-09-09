@@ -46,6 +46,8 @@ class Utils {
     }
 
     createForm(options: FormOptions[]) {
+        if (options.length === 0) return;
+        
         this.updateSpinner({
             hidden: true,
         });
