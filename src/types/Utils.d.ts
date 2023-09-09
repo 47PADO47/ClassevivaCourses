@@ -1,4 +1,5 @@
 import { ExtendedElement } from ".";
+import { ClassOptions } from "./Classeviva";
 
 type FormOptions = {
     [K in keyof ExtendedElement]?: ExtendedElement[K];
@@ -13,3 +14,7 @@ type buttonPressCallbackData = {
 }
 
 type waitForButtonPressCallback = (data: buttonPressCallbackData) => Promise<boolean>;
+
+type CredentialsInput = ExtendedElement<HTMLInputElement> & {
+  id: keyof ClassOptions
+};
