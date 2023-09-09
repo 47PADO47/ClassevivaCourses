@@ -12,6 +12,7 @@ const config: Config = {
     },
     debug: false,
     staticHost: '{static_host}',
+    dashboardPath: 'src/dashboard.html',
 };
 
 if (config.debug) config.staticHost = prompt('static host:') || config.staticHost;
