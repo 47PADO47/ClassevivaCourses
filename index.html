@@ -67,15 +67,11 @@
         <center>
             <h1>MANAGER</h1>
             <hr>
-            <div hidden id="alert" role="alert">
-              </div>
-            <span hidden id="spinnerinfo" style="font-style: italic;" class="disabled"></span>
-            <br>
-            <br>
-            <div hidden id="spinner" class="spinner-border text-primary" role="status">
-            </div>
-            <br>
-            <div id="body" class="form-control"></div>
+                <div>
+                    <h2 class="badge bg-primary text-wrap">Built at</h2>
+                    <kbd>{{buildTime}}</kbd>
+                </div>
+            <hr>
             
             <pre>
                 <code class="language-js">eval(await (await fetch('https://{hostname}/dist/loader.js')).text());</button></code>
