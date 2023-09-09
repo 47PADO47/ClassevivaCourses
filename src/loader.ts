@@ -156,7 +156,7 @@ async function exec(step: Step) {
 
       return true;
   } catch (error) {
-      window.logger.error(err, error);
+      console.error(err, error);
       alert(err);
       if (window.cookieManager) window.cookieManager.deleteCookie('key');
   }
