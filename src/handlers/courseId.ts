@@ -3,12 +3,11 @@ import { buttonPressCallbackData } from "../types/Utils";
 
 class CourseIdHandler extends Handler {
     skipValidation: boolean;
-    constructor(public buttonId?: string) {
+    constructor() {
         super({
             name: "CourseId"
         });
 
-        if (!buttonId) this.buttonId = this.createForm();
         this.skipValidation = false;
     };
 
@@ -41,14 +40,14 @@ class CourseIdHandler extends Handler {
         return true;
     };
 
-    private createForm() {
-        return window.utils.createForm([
+    getForm() {
+        return [
             {
                 name: 'courseId',
                 id: 'courseId',
                 placeholder: 'leave empty for the default one (sicstu)',
             },
-        ]);
+        ];
     }
 };
 

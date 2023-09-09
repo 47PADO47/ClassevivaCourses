@@ -1,13 +1,11 @@
 import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
 
 class ExercisesHandler extends Handler {
-    constructor(public element?: ExtendedElement) {
+    constructor() {
         super({
-            name: "Exercises"
+            name: "Exercises",
+            useElement: true,
         });
-
-        if (!element) this.element = document.getElementById(this.createForm());
     };
 
     async handle() {
@@ -40,16 +38,16 @@ class ExercisesHandler extends Handler {
         });
     };
 
-    private createForm() {
-        return window.utils.createForm([
-            {
-              title: 'Complete exercises 📰',
-              name: 'coursexercises',
-              id: 'CVVEXERCISES',
-              type: 'checkbox',
-              hidden: true,
-            }
-        ]);
+    getForm() {
+      return [
+          {
+            title: 'Complete exercises 📰',
+            name: 'coursexercises',
+            id: 'CVVEXERCISES',
+            type: 'checkbox',
+            hidden: true,
+          }
+      ];
     }
 };
 

@@ -1,13 +1,11 @@
 import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
 
 class VideosHandler extends Handler {
-    constructor(public element?: ExtendedElement) {
+    constructor() {
         super({
-            name: "Videos"
+            name: "Videos",
+            useElement: true,
         });
-
-        if (!element) this.element = document.getElementById(this.createForm());
     };
 
     async handle() {
@@ -34,16 +32,16 @@ class VideosHandler extends Handler {
         });
     };
 
-    private createForm() {
-        return window.utils.createForm([
-            {
-              title: 'Watch videos 📺',
-              name: 'coursevideos',
-              id: 'CVVVIDEOS',
-              type: 'checkbox',
-              hidden: true,
-            }
-        ]);
+    getForm() {
+      return [
+          {
+            title: 'Watch videos 📺',
+            name: 'coursevideos',
+            id: 'CVVVIDEOS',
+            type: 'checkbox',
+            hidden: true,
+          }
+      ];
     }
 };
 

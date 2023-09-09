@@ -3,11 +3,10 @@ import { User } from "../types/Config";
 import { buttonPressCallbackData } from "../types/Utils";
 
 class KeyHandler extends Handler {
-    constructor(public buttonId?: string) {
+    constructor() {
         super({
             name: "Key"
         });
-        if (!buttonId) this.buttonId = this.createForm();
     };
 
     async handle({ inputs }: buttonPressCallbackData) {
@@ -50,11 +49,13 @@ class KeyHandler extends Handler {
         return true;
     };
 
-    private createForm() {
-        return window.utils.createForm([{
-            name: 'key',
-            id: 'key',
-        }]);
+    getForm() {
+        return [
+            {
+                name: 'key',
+                id: 'key',
+            }
+        ];
     }
 };
 

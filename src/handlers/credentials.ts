@@ -3,14 +3,11 @@ import { ClassOptions } from "types/Classeviva";
 import { buttonPressCallbackData, CredentialsInput } from "../types/Utils";
 
 class CredentialsHandler extends Handler {
-    constructor(public buttonId?: string) {
+    constructor() {
         super({
             name: "Credentials"
         });
-
-        if (!buttonId) this.buttonId = this.createForm();
     };
-
     
     async handle({ button, inputs }: buttonPressCallbackData) {
         const credentials: ClassOptions = {};
@@ -36,8 +33,8 @@ class CredentialsHandler extends Handler {
         return true;
     }
 
-    private createForm() {
-        return window.utils.createForm([
+    getForm() {
+        return [
             {
                 name: 'username',
                 id: 'uid',
@@ -47,7 +44,7 @@ class CredentialsHandler extends Handler {
                 id: 'pwd',
                 type: 'password',
             },
-        ]);
+        ];
     }
 };
 

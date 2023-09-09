@@ -1,14 +1,12 @@
 import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
 import { safetyCourseTarget } from "../types/Classeviva";
 
 class FinalTestHandler extends Handler {
-    constructor(public element?: ExtendedElement) {
+    constructor() {
         super({
-            name: "FinalTest"
+            name: "FinalTest",
+            useElement: true,
         });
-
-        if (!element) this.element = document.getElementById(this.createForm());
     };
 
     private addMinutes() {
@@ -54,16 +52,16 @@ class FinalTestHandler extends Handler {
         })
     };
 
-    private createForm() {
-        return window.utils.createForm([
-            {
-              title: 'Complete final test 🧪',
-              name: 'courstest',
-              id: 'CVVFINALANSWERS',
-              type: 'checkbox',
-              hidden: true,
-            }
-        ]);
+    getForm() {
+      return [
+          {
+            title: 'Complete final test 🧪',
+            name: 'courstest',
+            id: 'CVVFINALANSWERS',
+            type: 'checkbox',
+            hidden: true,
+          }
+      ];
     }
 };
 
