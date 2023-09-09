@@ -4,7 +4,7 @@ import { FormOptions, waitForButtonPressCallback } from "../types/Utils";
 class Utils {
     constructor() { };
 
-    updateButton(disabled: boolean, button: ExtendedElement) {
+    updateButton(disabled: boolean, button: ExtendedElement<HTMLButtonElement>) {
         button.disabled = disabled;
     }
 
@@ -29,11 +29,17 @@ class Utils {
 
     async waitForButtonPress(buttonId: string, callback: waitForButtonPressCallback): Promise<boolean> {
         return new Promise((resolve) => {
-            const button = document.getElementById(buttonId);
+            const button = document.getElementById(buttonId) as ExtendedElement<HTMLButtonElement>;
+            const inputs = buttonId
+                .split('_')
+                .slice(1)
+                .map((inputId: string) => document.getElementById(inputId)) as ExtendedElement<HTMLInputElement>[];
+
             button.addEventListener("click", function (event) {
                 return resolve(callback({
                     event,
                     button,
+                    inputs,
                 }));
             });
         });
