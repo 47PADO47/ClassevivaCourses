@@ -1,10 +1,11 @@
-import { Exercise, Final } from "../types/Course";
+import { CourseInfo, Exercise, Final } from "../types/Course";
 
+//https://media.spaggiari.eu/bianco/www/img/brochure_sicurezza_2016.pdf
 class CvvCourse {
-    constructor (public id: string) {
-        this.id = id;
+    constructor (public info: CourseInfo) {
+        this.info.name = this.info.name ?? this.info.id;
         
-        window.logger.success(`Course "${this.id}" initialized ⌨️`);
+        window.logger.success(`Course "${this.info.name}" initialized ⌨️`);
     };
 
     get exercises(): Exercise[] {
