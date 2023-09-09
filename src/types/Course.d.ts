@@ -1,3 +1,8 @@
+type CourseInfo = {
+    id: string;
+    name?: string;
+}
+
 type Exercise = {
     numero: string;
     domanda: string;
@@ -11,6 +16,7 @@ type Final = {
 };
 
 export {
+    CourseInfo,
     Exercise,
     Final,
 }
