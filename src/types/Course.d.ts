@@ -1,3 +1,8 @@
+interface ICourse {
+    id: string;
+    name: string;
+}
+
 type CourseInfo = {
     id: string;
     name?: string;
@@ -16,6 +21,7 @@ type Final = {
 };
 
 export {
+    ICourse,
     CourseInfo,
     Exercise,
     Final,
