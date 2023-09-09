@@ -27,10 +27,18 @@ class UIHandler extends Handler {
     }
 
     updateCourseName() {
+        if (!window.course) return;
+        
         const name = document.getElementById('courseName');
-        name.innerText = window.course.name;
-
         const nameContainer = document.getElementById('courseNameContainer');
+
+        name.innerText = window.course.name;
+        name.style.cursor = 'pointer';
+        
+        name.addEventListener('click', function () {
+            window.open(window.course.getUrl(), '_blank');
+        });
+
         nameContainer.hidden = false;
     }
 };
