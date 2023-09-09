@@ -7,7 +7,7 @@ class UIHandler extends Handler {
         });
     };
 
-    async handle<undefined>() {
+    async handle() {
         const dashboardUrl = window.config.staticHost + window.config.dashboardPath;
         const html = await (await fetch(dashboardUrl)).text();
           
