@@ -8,6 +8,8 @@ type FormOptions = {
 
 type buttonPressCallbackData = {
   event: Event,
-  button: ExtendedElement,
+  button: ExtendedElement<HTMLButtonElement>,
+  inputs?: ExtendedElement<HTMLInputElement>[],
 }
+
 type waitForButtonPressCallback = (data: buttonPressCallbackData) => Promise<boolean>;
