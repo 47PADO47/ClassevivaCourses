@@ -35,6 +35,7 @@ interface ClassOptions {
     | "cvp";
   
   type safetyCourseTarget = "vid" | "sli" | "tst" | "nor" | "ind";
+  type safetyCoursePage = "pre" | "doc" | "ind" | "bib" | "cha" | "att" | "sta" | "gra";
   
   type safetyCourseAnswer = {
     lesson: number | string;
@@ -50,4 +51,5 @@ interface ClassOptions {
     prodotto,
     safetyCourseAnswer,
     safetyCourseTarget,
+    safetyCoursePage,
   }
