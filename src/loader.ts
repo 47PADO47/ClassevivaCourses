@@ -114,7 +114,9 @@ const steps: Step[] = [
       };
 
       await fetchImport(window.config.staticHost + `dist/courses/${window.classeviva.courseId}.js`);
-      window.course = new Course(window.classeviva.courseId);
+      window.course = new Course({
+        id: window.classeviva.courseId,
+      });
 
       return true;
     }
