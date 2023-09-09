@@ -2,7 +2,10 @@ import CvvCourse from "../core/CvvCourse";
 
 class Course extends CvvCourse {
     constructor() {
-        super('sicstu');
+        super({
+            id: 'sicstu',
+            name: 'Corso per studenti equiparati a lavoratori'
+        });
     }
 
     get exercises() {
