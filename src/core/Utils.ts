@@ -66,7 +66,7 @@ class Utils {
             const input = document.createElement('input');
             input.type = option.type ?? 'text';
             input.name = option.id;
-            input.placeholder = option.name;
+            input.placeholder = option.placeholder ?? option.name;
             input.id = option.id;
             input.className = 'form-control';
             input.hidden = !!option.hidden;
