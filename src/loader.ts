@@ -123,17 +123,10 @@ const steps: Step[] = [
 
           await window.utils.updatePrivacyPolicy();
           
-          const minutesHandler = new MinutesHandler();
-          minutesHandler.registerInteraction(minutesHandler.element);
-
-          const videosHandler = new VideosHandler();
-          videosHandler.registerInteraction(videosHandler.element);
-
-          const exercisesHandler = new ExercisesHandler();
-          exercisesHandler.registerInteraction(exercisesHandler.element);
-
-          const finalTestHandler = new FinalTestHandler();
-          finalTestHandler.registerInteraction(finalTestHandler.element);
+          new MinutesHandler();
+          new VideosHandler();
+          new ExercisesHandler();
+          new FinalTestHandler();
 
           return true;
       }
