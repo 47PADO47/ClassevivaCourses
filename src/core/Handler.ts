@@ -13,7 +13,10 @@ class Handler {
 
         this.buttonId = window.utils.createForm(options.form ?? this.getForm());
 
-        if (options.useElement) this.element = document.getElementById(this.buttonId) as ExtendedElement<HTMLButtonElement>;
+        if (options.useElement) {
+            this.element = document.getElementById(this.buttonId) as ExtendedElement<HTMLButtonElement>;
+            this.registerInteraction();
+        }
         if (options.handle) this.handle = options.handle;
 
         window.logger.success(`Handler "${this.name}" initialized 🧪`);
@@ -27,16 +30,19 @@ class Handler {
         throw new Error("Method not implemented ❌");
     }
 
-    async registerInteraction(element: ExtendedElement<HTMLButtonElement>) {
-        element.addEventListener('click', async () => {
+    private async registerInteraction() {
+        if (!this.element) return;
+
+        this.element.addEventListener('click', async () => {
             try {
-                window.utils.updateButton(true, element);
+                window.utils.updateButton(true, this.element);
                 await this.handle({});
-                window.utils.updateButton(false, element);
+                window.utils.updateButton(false, this.element);
             } catch (error) {
                 window.logger.error(`Handler "${this.name}" encountered and error executing interaction`, error);
             }
         });
+        
         return this;
     }
 }
