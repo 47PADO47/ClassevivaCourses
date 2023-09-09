@@ -12,6 +12,7 @@ type Config = {
   pinger: PingerOptions;
   debug: boolean;
   staticHost: string;
+  dashboardPath: string;
 }
 
 export {
