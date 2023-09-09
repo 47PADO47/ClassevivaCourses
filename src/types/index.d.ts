@@ -7,6 +7,7 @@ import NotificationManager from "core/NotificationManager";
 import CvvCourse from "core/CvvCourse";
 import Utils from "core/Utils";
 import Logger from "core/Logger";
+import UIHandler from "handlers/ui";
 
 declare global {
     interface Window {
@@ -19,6 +20,7 @@ declare global {
         course: CvvCourse;
         utils: Utils;
         logger: Logger;
+        ui: UIHandler;
     }
 }
   
