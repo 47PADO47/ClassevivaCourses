@@ -50,6 +50,7 @@ class CourseIdHandler extends Handler {
             {
                 name: 'courseId',
                 id: 'courseId',
+                placeholder: 'leave empty for the default one (sicstu)',
             },
         ]);
     }
