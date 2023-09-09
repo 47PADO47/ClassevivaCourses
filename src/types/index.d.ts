@@ -30,7 +30,7 @@ type Step = {
     doNotResetBody?: boolean;
 };
   
-interface ExtendedElement extends HTMLElement {
+type ExtendedElement<T = HTMLElement> = T & {
     value?: string;
     for?: string;
     disabled?: boolean;
