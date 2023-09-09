@@ -1,5 +1,4 @@
 import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
 import { User } from "../types/Config";
 import { buttonPressCallbackData } from "../types/Utils";
 
@@ -11,9 +10,8 @@ class KeyHandler extends Handler {
         if (!buttonId) this.buttonId = this.createForm();
     };
 
-    async handle({ button }: buttonPressCallbackData) {
-        const input: ExtendedElement = document.getElementById(button.id.split('_').pop());
-        const key = input.value;
+    async handle({ inputs }: buttonPressCallbackData) {
+        const { value: key } = inputs[0];
 
         const res = await window.keyManager.isValid(key);
         if (!res) {

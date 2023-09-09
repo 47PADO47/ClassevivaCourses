@@ -1,5 +1,4 @@
 import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
 import { buttonPressCallbackData } from "../types/Utils";
 
 class CourseIdHandler extends Handler {
@@ -14,11 +13,8 @@ class CourseIdHandler extends Handler {
     };
 
     
-    async handle({ button }: buttonPressCallbackData) {
-        //if (this.skipValidation) return true;
-        
-        const input: ExtendedElement = document.getElementById(button.id.split('_').pop());
-        const courseId = input.value;
+    async handle({ inputs }: buttonPressCallbackData) {
+        const { value: courseId } = inputs[0];
     
         if (!(await window.classeviva.isCourseValid(courseId || window.classeviva.courseId))) {
             const message = 'Failed to validate courseId';

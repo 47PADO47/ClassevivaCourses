@@ -1,6 +1,6 @@
 import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
-import { buttonPressCallbackData } from "../types/Utils";
+import { ClassOptions } from "types/Classeviva";
+import { buttonPressCallbackData, CredentialsInput } from "../types/Utils";
 
 class CredentialsHandler extends Handler {
     constructor(public buttonId?: string) {
@@ -12,13 +12,11 @@ class CredentialsHandler extends Handler {
     };
 
     
-    async handle({ button }: buttonPressCallbackData) {
-        const credentials: Record<string, string> = {};
+    async handle({ button, inputs }: buttonPressCallbackData) {
+        const credentials: ClassOptions = {};
         
-        button.id.split('_')
-        .filter((_, i) => i !== 0)
-        .map((id) => document.getElementById(id))
-        .map((e: ExtendedElement) => credentials[e.id] = e.value);
+        const credentialsInputs = inputs as CredentialsInput[];
+        credentialsInputs.map((e) => credentials[e.id] = e.value);
     
         const { result } = await window.classeviva.login(credentials);
         if (window.classeviva.user.type !== 'S') return false;
