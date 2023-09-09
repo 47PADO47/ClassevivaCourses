@@ -4,9 +4,12 @@ const { Base64, loadEnv } = require('./utils');
 
 (async () => {
     await loadEnv();
+    const isProd = process.env.NODE_ENV !== 'production';
     
     const httpPath = Base64.decode(process.env.STATIC_HOST) + 'dist/';
     const file = path.join(process.cwd(), 'dist', 'loader.js');
+
+    if (!isProd) console.log('[+]', `HTTP path: ${httpPath}`);
 
     let data = fs.readFileSync(file, 'utf-8');
 
@@ -44,6 +47,16 @@ const { Base64, loadEnv } = require('./utils');
     fs.writeFileSync(file, newData);
 
     console.log('[+]', `Replaced imports, suggested waitSeconds=${imports.length/2}`);
+
+    const indexPath = path.join(process.cwd(), 'index.html');
+    const html = fs.readFileSync(indexPath, 'utf-8');
+
+    if (isProd) {
+        const buildTime = new Date().toUTCString();
+
+        fs.writeFileSync(indexPath, html.replace('{{buildTime}}', buildTime));
+        console.log('[+]', `Updated build time to ${buildTime}`);
+    }
 })();
 
 function replaceAll(str, search, replace) {
