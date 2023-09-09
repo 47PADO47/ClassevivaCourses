@@ -182,15 +182,17 @@ async function fetchImport(fileUrl: string) {
   }
 }
 
-const waitSeconds = 5;
+const waitSeconds = 10;
+alert(`Waiting for scripts to load, starting in ${waitSeconds} seconds`)
+
 setTimeout((async () => {
-    window.config = config;
-    window.utils = new Utils();
-    window.logger = new Logger();
-    
-    for (const step of steps) {
-        if (!(await exec(step))) break;
-    };
+  window.config = config;
+  window.utils = new Utils();
+  window.logger = new Logger();
+  
+  for (const step of steps) {
+      if (!(await exec(step))) break;
+  };
 }), waitSeconds*1000);
 
 export {}
