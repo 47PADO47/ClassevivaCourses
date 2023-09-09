@@ -28,6 +28,7 @@ async function loadEnv() {
     process.env[key.trim()] = Base64.encode(value.trim());
   };
   
+  console.log('[+]', `Loaded ${envLines.length} .env properties`);
   return process.env;
 }
 
