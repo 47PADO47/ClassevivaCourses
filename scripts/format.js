@@ -24,9 +24,10 @@ const { Base64, loadEnv } = require('./utils');
         str = replaceAll(str, new RegExp("'"), '');
         str = replaceAll(str, new RegExp('"'), '');
 
+        console.log('[i]', `Found import "${str}"`);
         imports.push(str);
     }
-    console.log(imports);
+    console.log('[+]', `Found a total of ${imports.length} imports`);
 
     // Replace each import statement with the fetchImport function
     const awaiter = data.split('\n').filter((_, i) => i<9).join('\n').length;
@@ -37,14 +38,12 @@ const { Base64, loadEnv } = require('./utils');
         data = data.replace(importRegex, '');
     };
     newData += `\n})();\n`;
-
     newData += data.slice(awaiter);
-
-    //data = data.split('\n').filter(x => x.length > 0).join('');
+    
     data.length--;
     fs.writeFileSync(file, newData);
 
-    console.log('Finished');
+    console.log('[+]', `Replaced imports, suggested waitSeconds=${imports.length/2}`);
 })();
 
 function replaceAll(str, search, replace) {
