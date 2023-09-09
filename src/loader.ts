@@ -17,6 +17,7 @@ import MinutesHandler from "handlers/minutes";
 import VideosHandler from "handlers/videos";
 import ExercisesHandler from "handlers/exercises";
 import FinalTestHandler from "handlers/finalTest";
+import UIHandler from "handlers/ui";
 
 const steps: Step[] = [
   {
@@ -34,6 +35,7 @@ const steps: Step[] = [
         window.pinger = new Pinger();
         window.keyManager = new KeyManager();
         window.notificationManager = new NotificationManager();
+        window.ui = new UIHandler();
         
         window.cookieManager.init(document);
         window.pinger.init(window.config.pinger);
@@ -68,15 +70,7 @@ const steps: Step[] = [
       name: 'updateHtml',
       doNotResetBody: true,
       execute: async () => {
-          const html = await (await fetch(window.config.staticHost + 'src/dashboard')).text();
-          
-          document.body.innerHTML = html;
-          document.title = "CVV MANAGER";
-          
-          window.utils.updateSpinner({
-            hidden: false,
-            text: 'Loading'
-          });
+          await window.ui.handle()
           return true;
       },
   },
@@ -124,9 +118,8 @@ const steps: Step[] = [
   {
       name: 'loadUI',
       execute: async () => {
-          const logoutButton = document.getElementById('logout');
-          logoutButton.hidden = false;
-          logoutButton.addEventListener('click', () => window.utils.logout());
+          window.ui.enableLogout()
+          window.ui.updateCourseName();
 
           await window.utils.updatePrivacyPolicy();
           
