@@ -91,6 +91,10 @@ const steps: Step[] = [
     name: 'chooseCourseId',
     execute: async () => {
       const handler = new CourseIdHandler();
+      handler.display({
+        useElement: false,
+        form: handler.getForm(await handler.getCourses()),
+      });
 
       if (location.search.includes('corso')) {
         const params = new URLSearchParams(location.search);
