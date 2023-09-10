@@ -13,7 +13,7 @@ class Handler {
 
         if (options.handle) this.handle = options.handle;
 
-        this.display(options);
+        if (!options.manualDisplay) this.display(options);
         window.logger.success(`Handler "${this.name}" initialized 🧪`);
     };
 
