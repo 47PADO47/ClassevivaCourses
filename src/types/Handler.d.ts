@@ -6,7 +6,8 @@ type HandlerDisplayOptions = {
 }
 
 type HandlerOptions = HandlerDisplayOptions & {
-    name: string,
+    name: string;
+    manualDisplay?: boolean;
     
     handle?: waitForButtonPressCallback;
 };
