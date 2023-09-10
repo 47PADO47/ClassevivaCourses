@@ -1,5 +1,5 @@
 import { ExtendedElement } from "../types";
-import { HandlerOptions } from "../types/Handler";
+import { HandlerDisplayOptions, HandlerOptions } from "../types/Handler";
 import { buttonPressCallbackData, FormOptions } from "../types/Utils";
 
 class Handler {
@@ -11,16 +11,20 @@ class Handler {
             ? options.name
             : options.name + 'Handler';
 
+        if (options.handle) this.handle = options.handle;
+
+        this.display(options);
+        window.logger.success(`Handler "${this.name}" initialized 🧪`);
+    };
+
+    display(options: HandlerDisplayOptions) {
         this.buttonId = window.utils.createForm(options.form ?? this.getForm());
 
         if (options.useElement) {
             this.element = document.getElementById(this.buttonId) as ExtendedElement<HTMLButtonElement>;
             this.registerInteraction();
         }
-        if (options.handle) this.handle = options.handle;
-
-        window.logger.success(`Handler "${this.name}" initialized 🧪`);
-    };
+    }
 
     getForm(): FormOptions[] {
         return [];
