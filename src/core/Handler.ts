@@ -24,11 +24,13 @@ class Handler {
             this.element = document.getElementById(this.buttonId) as ExtendedElement<HTMLButtonElement>;
             this.registerInteraction();
         }
+
+        return this;
     }
 
-    getForm(): FormOptions[] {
+    getForm(..._data: any[]): FormOptions[] {
         return [];
-    };
+    }
 
     handle<T>(_data: buttonPressCallbackData | T) {
         throw new Error("Method not implemented ❌");
