@@ -1,13 +1,17 @@
 import { FormOptions, waitForButtonPressCallback } from "./Utils";
 
-type HandlerOptions = {
-    name: string,
+type HandlerDisplayOptions = {
     form?: FormOptions[];
     useElement?: boolean;
+}
+
+type HandlerOptions = HandlerDisplayOptions & {
+    name: string,
     
     handle?: waitForButtonPressCallback;
 };
 
 export {
     HandlerOptions,
+    HandlerDisplayOptions,
 }
