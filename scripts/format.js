@@ -4,7 +4,7 @@ const { Base64, loadEnv } = require('./utils');
 
 (async () => {
     await loadEnv();
-    const isProd = process.env.NODE_ENV !== 'production';
+    const isProd = process.env.NODE_ENV === 'production';
     
     const httpPath = Base64.decode(process.env.STATIC_HOST) + 'dist/';
     const file = path.join(process.cwd(), 'dist', 'loader.js');
