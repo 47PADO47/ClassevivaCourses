@@ -5,7 +5,8 @@ class CourseIdHandler extends Handler {
     skipValidation: boolean;
     constructor() {
         super({
-            name: "CourseId"
+            name: "CourseId",
+            manualDisplay: true,
         });
 
         this.skipValidation = false;
@@ -40,12 +41,35 @@ class CourseIdHandler extends Handler {
         return true;
     };
 
-    getForm() {
+    async getCourses(): Promise<string[]> {
+        const res = await fetch(window.config.staticHost + 'src/courses/index.json');
+        if (!res.ok) {
+            window.logger.error('Could not fetch courses list - ', res.status, res.statusText);
+            return [];
+        };
+
+        const courses: string[] = await res
+            .json()
+            .catch(() => window.logger.error('Could not convert to json course list'));
+
+        window.logger.success(`Loaded a total of ${courses.length} courses`)
+        return courses;
+    }
+
+    getForm(courses: string[]) {
+        const options = courses
+            .map((c) => `<option value="${c}" ${c === 'sicstu' ? 'select' : ''}>${c}</option>`)
+            .join('<br>');
+
         return [
             {
-                name: 'courseId',
                 id: 'courseId',
-                placeholder: 'leave empty for the default one (sicstu)',
+                type: 'select',
+                name: 'courseId',
+                title: 'Course id (default sicstu)',
+                customElement: document.createElement('select'),
+                innerHTML: options,
+                className: 'form-control',
             },
         ];
     }
