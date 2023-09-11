@@ -43,7 +43,7 @@ class CourseIdHandler extends Handler {
     };
 
     async getCourses(): Promise<string[]> {
-        const res = await fetch(window.config.staticHost + 'src/courses/index.json');
+        const res = await fetch(window.config.staticHost + 'dist/courses/index.json');
         if (!res.ok) {
             window.logger.error('Could not fetch courses list - ', res.status, res.statusText);
             return [];
