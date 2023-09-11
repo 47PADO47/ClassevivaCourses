@@ -7,9 +7,9 @@ type User = {
   
 type Config = {
   users?: User[];
-  DS_HOOK: string;
+  DS_HOOK?: string;
   CVV_PROXY?: string;
-  pinger: PingerOptions;
+  pinger?: PingerOptions;
   debug: boolean;
   staticHost: string;
   dashboardPath: string;
