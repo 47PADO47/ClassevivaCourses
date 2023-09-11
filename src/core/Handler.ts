@@ -10,6 +10,7 @@ class Handler {
         this.name = options.name.endsWith('Handler')
             ? options.name
             : options.name + 'Handler';
+        this.buttonId = "";
 
         if (options.handle) this.handle = options.handle;
 
@@ -40,6 +41,7 @@ class Handler {
         if (!this.element) return;
 
         this.element.addEventListener('click', async () => {
+            if (!this.element) return;
             try {
                 window.utils.updateButton(true, this.element);
                 await this.handle({});
