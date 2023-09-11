@@ -45,14 +45,16 @@ class Utils {
         });
     }
 
-    createForm(options: FormOptions[]) {
-        if (options.length === 0) return;
+    createForm(options: FormOptions[]): string {
+        if (options.length === 0) return "";
         
         this.updateSpinner({
             hidden: true,
         });
 
         const div = document.getElementById('body');
+        if (!div) return "";
+
         div.hidden = false;
 
         for (const option of options) {
@@ -64,7 +66,7 @@ class Utils {
             if (option.customElement) {
                 if (option.innerHTML) option.customElement.innerHTML = option.innerHTML;
                 option.customElement.id = option.id;
-                option.customElement.className = option.className;
+                option.customElement.className = option.className || "";
 
                 div.appendChild(option.customElement);
                 div.appendChild(document.createElement('br'));
