@@ -14,15 +14,15 @@ class ExercisesHandler extends Handler {
           try {
             await window.classeviva.setSafetyCourseAnswer({
               type: 'tst',
-              lesson: answer.numero,
-              question: answer.domanda,
-              resultNumber: answer.risposta,
+              lesson: answer.number,
+              question: answer.question,
+              resultNumber: answer.answer,
             });
 
-            window.logger.info(`Completed answer ${answer.numero}`);
+            window.logger.info(`Completed answer ${answer.number}`);
             completedAnswers.push(answer);
           } catch (error) {
-            window.logger.error(`Could not complete answer ${answer.numero}`, error);                  
+            window.logger.error(`Could not complete answer ${answer.number}`, error);                  
           }
         };
 
