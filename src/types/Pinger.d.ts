@@ -4,7 +4,7 @@ type Url = {
 }
   
 type PingerOptions = {
-    domains: Url[],
+    domains?: Url[],
     timeout?: number,
 }
 
