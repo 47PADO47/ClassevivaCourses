@@ -1,5 +1,5 @@
 import { safetyCoursePage } from "types/Classeviva";
-import { CourseInfo, Exercise, Final, ICourse } from "../types/Course";
+import { CourseInfo, Answer, ICourse } from "../types/Course";
 
 //https://media.spaggiari.eu/bianco/www/img/brochure_sicurezza_2016.pdf
 class CvvCourse implements ICourse {
@@ -12,7 +12,7 @@ class CvvCourse implements ICourse {
         window.logger.success(`Course "${this.name}" initialized ⌨️`);
     };
 
-    get exercises(): Exercise[] {
+    get exercises(): Answer[] {
         throw new Error("Method not implemented ❌");
     };
 
@@ -20,7 +20,7 @@ class CvvCourse implements ICourse {
         throw new Error("Method not implemented ❌");
     };
 
-    get final(): Final[] {
+    get final(): Answer[] {
         throw new Error("Method not implemented ❌");
     };
 

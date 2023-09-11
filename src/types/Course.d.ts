@@ -8,21 +8,14 @@ type CourseInfo = {
     name?: string;
 }
 
-type Exercise = {
-    numero: string;
-    domanda: string;
-    risposta: string;
-};
-
-type Final = {
-    numero: string;
-    domanda: string;
-    risposta: string;
+type Answer = {
+    number: string;
+    question: string;
+    answer: string;
 };
 
 export {
     ICourse,
     CourseInfo,
-    Exercise,
-    Final,
+    Answer,
 }
