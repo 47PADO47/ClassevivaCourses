@@ -98,8 +98,10 @@ const steps: Step[] = [
 
       if (location.search.includes('corso')) {
         const params = new URLSearchParams(location.search);
-        if (await window.classeviva.isCourseValid(params.get('corso'))) {
-          window.classeviva.setCourseId(params.get('corso'));
+        const courseId = params.get('corso');
+
+        if (courseId && await window.classeviva.isCourseValid(courseId)) {
+          window.classeviva.setCourseId(courseId);
 
           window.logger.info('Skipped course id validation');
           handler.skipValidation = true;
