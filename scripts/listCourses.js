@@ -16,6 +16,7 @@ const path = require('path');
     
     console.log('[+]', `Found a total of ${courses.length} courses`);
     
-    const indexPath = path.join(dir, 'index.json');
+    const distDir = path.join(process.cwd(), 'dist', 'courses');
+    const indexPath = path.join(distDir, 'index.json');
     fs.writeFileSync(indexPath, JSON.stringify(courses));
 })();
