@@ -1,5 +1,6 @@
 {
   "compileOnSave": false,
+  "include": ["src/**/*"],
   "compilerOptions": {
     "baseUrl": "src",
     "downlevelIteration": true,
