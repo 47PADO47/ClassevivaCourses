@@ -9,7 +9,10 @@ class KeyHandler extends Handler {
         });
     };
 
-    async handle({ inputs }: buttonPressCallbackData) {
+    async handle({ inputs }: buttonPressCallbackData): Promise<boolean> {
+        if (!window.config.users) return false;
+        
+        if (!inputs) return false;
         const { value: key } = inputs[0];
 
         const res = await window.keyManager.isValid(key);
@@ -32,6 +35,8 @@ class KeyHandler extends Handler {
         });
 
         const user = window.config.users.find((u: User) => u.key === key);
+        if (!user) return false;
+
         const message = `Successfully validated key (${key}) for user ${user.name}`;
 
         window.notificationManager.notify({

@@ -3,11 +3,10 @@ import { ExtendedElement } from "../types";
 import { safetyCourseTarget } from "../types/Classeviva";
 
 class MinutesHandler extends Handler {
-    timeTypes: string[];
     constructor() {
-        const timeTypes = ["vid", "sli", "tst", "nor", "ind"];
+        const timeTypes: safetyCourseTarget[] = ["vid", "sli", "tst", "nor", "ind"];
         const options = timeTypes
-            .map((t: safetyCourseTarget) => `<option value="${t}" ${t === 'vid' ? 'select' : ''}>${t}</option>`)
+            .map((t) => `<option value="${t}" ${t === 'vid' ? 'select' : ''}>${t}</option>`)
             .join('<br>');
 
         super({
@@ -35,14 +34,22 @@ class MinutesHandler extends Handler {
     };
 
     async handle() {
-        const min: ExtendedElement = document.getElementById(this.element.id.split('_')[1]);
-        const T: ExtendedElement & { value?: safetyCourseTarget } = document.getElementById(this.element.id.split('_').pop());
-        const minutes = !isNaN(parseInt(min.value)) ? parseInt(min.value) : 0;
+        if (!this.element) return;
+        const [, minutesInputId, minutesTypeId] = this.element.id.split('_');
+
+        const min: ExtendedElement | null = document.getElementById(minutesInputId);
+        if (!min) return;
+
+        const minutesType: ExtendedElement & { value?: safetyCourseTarget } | null = document.getElementById(minutesTypeId);
+        if (!minutesType) return;
+
+        const value = parseInt(min.value || "");
+        const minutes = !isNaN(value) ? value : 0;
 
         try {
-          await window.classeviva.addSafetyCourseMinutes(T.value ?? 'vid', minutes);
+          await window.classeviva.addSafetyCourseMinutes(minutesType.value ?? 'vid', minutes);
           await window.notificationManager.notify({
-            message: `Added ${minutes} minutes to course (${T.value}).`,
+            message: `Added ${minutes} minutes to course (${minutesType.value}).`,
             logType: 'info',
             alert: {
               type: 'success',

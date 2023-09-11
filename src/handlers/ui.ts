@@ -22,6 +22,8 @@ class UIHandler extends Handler {
     
     enableLogout() {
         const logoutButton = document.getElementById('logout');
+        if (!logoutButton) return;
+
         logoutButton.hidden = false;
         logoutButton.addEventListener('click', () => window.utils.logout());
     }
@@ -31,6 +33,7 @@ class UIHandler extends Handler {
         
         const name = document.getElementById('courseName');
         const nameContainer = document.getElementById('courseNameContainer');
+        if (!name || !nameContainer) return;
 
         name.innerText = window.course.name;
         name.style.cursor = 'pointer';

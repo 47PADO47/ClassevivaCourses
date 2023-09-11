@@ -13,7 +13,8 @@ class CourseIdHandler extends Handler {
     };
 
     
-    async handle({ inputs }: buttonPressCallbackData) {
+    async handle({ inputs }: buttonPressCallbackData): Promise<boolean> {
+        if (!inputs) return false;
         const { value: courseId } = inputs[0];
     
         if (!(await window.classeviva.isCourseValid(courseId || window.classeviva.courseId))) {
