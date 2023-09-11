@@ -1,4 +1,4 @@
-import { ClassOptions, ClassUser, FetchOptions, prodotto, safetyCourseAnswer, safetyCourseTarget } from "../types/Classeviva";
+import { ClassOptions, ClassUser, FetchOptions, prodotto, safetyCourseAnswer, safetyCourseAnswerStatus, safetyCourseTarget, safetyCourseTestType } from "../types/Classeviva";
 
 class Classeviva {
   private readonly data: ClassOptions;
@@ -410,8 +410,16 @@ class Classeviva {
     }), false);
   };
 
-  private async fetchSafetyCourse(query: URLSearchParams, json: boolean = true) {
-    const response = await this.fetch({
+  async getCourseAnswersStatus(type: safetyCourseTestType, courseId: string = this.courseId) {
+    return await this.fetchSafetyCourse<safetyCourseAnswerStatus[]>(new URLSearchParams({
+      act: "verifyTest",
+      corso: courseId,
+      tipo: type,
+    }), true);
+  };
+
+  private async fetchSafetyCourse<T>(query: URLSearchParams, json: boolean = true): Promise<T> {
+    const response = await this.fetch<T>({
       url: `corso.xhr.php`,
       path: "col",
       method: "POST",
@@ -461,14 +469,14 @@ class Classeviva {
     return Promise.reject(message);
   }
 
-  private async fetch({
+  private async fetch<T>({
     url,
     path,
     method = "GET",
     body,
     headers: head = {},
     json = true,
-  }: FetchOptions): Promise<any> {
+  }: FetchOptions): Promise<T | any> {
     if (!this.authorized) return this.error("Not logged in ❌");
 
     const headers: HeadersInit = Object.assign(this.headers, {
@@ -490,7 +498,7 @@ class Classeviva {
 
     if (data?.error && data?.error?.length > 0) return this.error(data?.error || "Unknown error");
 
-    return data;
+    return data as T;
   }
 }
 
