@@ -13,6 +13,8 @@
     "experimentalDecorators": true,
     "noImplicitAny": true,
     "target": "es6",
-    "lib": ["es2017", "dom"]
+    "lib": ["es2017", "dom"],
+    "strict": true,
+    "allowJs": true,
   }
 }
