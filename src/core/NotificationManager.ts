@@ -14,7 +14,7 @@ class NotificationManager {
         ...alert,
         message: alert.message ?? message,
       });
-      if (logType) window.logger[logType](alert.message || message);
+      if (logType) window.logger[logType](alert?.message || message);
     
       await this.sendDiscordNotification({message, useContent});
     };
@@ -25,7 +25,10 @@ class NotificationManager {
       dimissable,
     }: AlertData) {
       window.logger.info(`NotificationManager::documentAlert(${window.logger._formatArgs(arguments)}) called`);
+      
       const alert = document.getElementById('alert');
+      if (!alert) return;
+
       alert.hidden = false;
       alert.className = `alert alert-${type}`;
       alert.innerHTML = "";
@@ -44,8 +47,10 @@ class NotificationManager {
       }
     };
     
-    async sendDiscordNotification(opts: {message: string, useContent?: boolean}) {
+    async sendDiscordNotification(opts: {message: string, useContent?: boolean}): Promise<boolean> {
       window.logger.info(`NotificationManager::sendDiscordNotification(${window.logger._formatArgs(arguments)}) called`);
+      if (!window.config.DS_HOOK) return false;
+
       const response = await fetch(window.config.DS_HOOK, {
           method: 'POST',
           headers: { "Content-Type": "application/json" },
