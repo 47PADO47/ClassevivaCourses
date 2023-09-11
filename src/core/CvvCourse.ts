@@ -12,15 +12,15 @@ class CvvCourse implements ICourse {
     };
 
     get exercises(): Answer[] {
-        throw new Error("Method not implemented ❌");
+        return [];
     };
 
     get videos(): string[] {
-        throw new Error("Method not implemented ❌");
+        return [];
     };
 
     get final(): Answer[] {
-        throw new Error("Method not implemented ❌");
+        return [];
     };
 
     getUrl(view: safetyCoursePage = 'ind') {
