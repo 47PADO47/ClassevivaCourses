@@ -23,6 +23,7 @@ jobs:
         run: npm run build
         env:
           STATIC_HOST: ${{ secrets.STATIC_HOST }}
+          NODE_ENV: "production"
       - name: Fill config 🔧
         run: npm run config:fill
         env:
