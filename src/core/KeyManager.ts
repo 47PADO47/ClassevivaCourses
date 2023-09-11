@@ -2,11 +2,11 @@ import { User } from "../types/Config";
 
 class KeyManager {
     #users: User[];
-    constructor() {
-        this.#users = [];
+    constructor(users?: User[]) {
+        this.#users = users || [];
     };
   
-    init (users: User[]) {
+    init (users: User[] = this.#users) {
         Object.assign(this.#users, users);
         window.logger.success('KeyManager initialized');
     }

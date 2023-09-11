@@ -1,21 +1,26 @@
 class CookieManager {
     document: Document;
-    constructor() { };
+    constructor(document?: Document) {
+        this.document = document || window.document;
+    };
   
-    init (document: Document): void {
+    init (document: Document = this.document): void {
         this.document = document;
         window.logger.success('CookieManager initialized');
     };
   
     getCookie(name: string): string {
-        if (!this.document) return;
+        if (!this.document) return "";
         window.logger.info(`CookieManager::getCookie(${name}) called`);
   
         let value = "; " + this.document.cookie;
         let parts = value.split("; " + name + "=");
-        if (parts.length === 2) {
-          return parts.pop().split(";").shift();
-        }
+
+        if (parts.length !== 2) return "";
+        return parts
+            .pop()
+            ?.split(";")
+            .shift() || "";
     };
     
     setCookie({ name, value, expiration }: {name: string, value: string, expiration?: number}) {

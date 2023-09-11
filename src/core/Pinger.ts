@@ -2,13 +2,14 @@ import { PingerOptions, Url } from "../types/Pinger";
   
 class Pinger {
     options: PingerOptions;
-    constructor() {
-        this.options;
+    constructor(options?: PingerOptions) {
+        this.options = options || {};
     };
   
-    init (options: PingerOptions): void {
-        this.options = options;
-        for (const domain of this.options.domains) {
+    init (options: PingerOptions = this.options): void {
+        if (!options.domains) return;
+
+        for (const domain of options.domains) {
             setInterval(async () => await this.ping({
                 url: domain.url,
                 method: domain.method,
