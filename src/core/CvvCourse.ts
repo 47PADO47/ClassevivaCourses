@@ -1,7 +1,6 @@
 import { safetyCoursePage } from "types/Classeviva";
 import { CourseInfo, Answer, ICourse } from "../types/Course";
 
-//https://media.spaggiari.eu/bianco/www/img/brochure_sicurezza_2016.pdf
 class CvvCourse implements ICourse {
     id: string;
     name: string;
