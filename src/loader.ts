@@ -130,9 +130,11 @@ const steps: Step[] = [
           await window.utils.updatePrivacyPolicy();
           
           new MinutesHandler();
-          new VideosHandler();
-          new ExercisesHandler();
-          new FinalTestHandler();
+
+          const { videos, exercises, final } = window.course;
+          if (videos.length > 0) new VideosHandler();
+          if (exercises.length > 0) new ExercisesHandler();
+          if (final.length > 0) new FinalTestHandler();
 
           return true;
       }
