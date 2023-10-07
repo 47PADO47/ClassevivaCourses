@@ -160,6 +160,7 @@ async function exec(step: Step) {
       console.error(err, error);
       alert(err);
       if (window.cookieManager) window.cookieManager.deleteCookie('key');
+      return false;
   }
 }
 
