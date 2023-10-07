@@ -17,6 +17,23 @@ class Course extends CvvCourse {
 
         return vids;
     }
+
+    get final() {
+        return [
+            { number: "d10", question: "10", answer: "1" },
+            { number: "d06", question: "6", answer: "1" },
+            { number: "d11", question: "11", answer: "1" },
+            { number: "d09", question: "9", answer: "2" },
+            { number: "d08", question: "8", answer: "1" },
+            { number: "d05", question: "5", answer: "3" },
+            { number: "d07", question: "7", answer: "2" },
+            { number: "d03", question: "3", answer: "1" },
+            { number: "d02", question: "2", answer: "1" },
+            { number: "d12", question: "12", answer: "2" },
+            { number: "d04", question: "4", answer: "2" },
+            { number: "d01", question: "1", answer: "2" },
+        ];
+    }
 };
 
 export default Course;
