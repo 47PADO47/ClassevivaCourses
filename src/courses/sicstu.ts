@@ -10,11 +10,11 @@ class Course extends CvvCourse {
 
     get exercises() {
         return [
-            { "numero": "01.03.d1", "domanda": "1", "risposta": "1" },
-            { "numero": "01.06.d1", "domanda": "1", "risposta": "2" },
-            { "numero": "01.10.d1", "domanda": "1", "risposta": "1" },
-            { "numero": "01.14.d1", "domanda": "1", "risposta": "3" },
-            { "numero": "01.18.d1", "domanda": "1", "risposta": "2" }
+            { number: "01.03.d1", question: "1", answer: "1" },
+            { number: "01.06.d1", question: "1", answer: "2" },
+            { number: "01.10.d1", question: "1", answer: "1" },
+            { number: "01.14.d1", question: "1", answer: "3" },
+            { number: "01.18.d1", question: "1", answer: "2" }
         ];
     }
 
@@ -37,16 +37,16 @@ class Course extends CvvCourse {
 
     get final() {
         return [
-            { "numero": "d5", "domanda": "5", "risposta": "1" },
-            { "numero": "d1", "domanda": "1", "risposta": "3" },
-            { "numero": "d7", "domanda": "7", "risposta": "2" },
-            { "numero": "d6", "domanda": "6", "risposta": "1" },
-            { "numero": "d2", "domanda": "2", "risposta": "1" },
-            { "numero": "d3", "domanda": "3", "risposta": "3" },
-            { "numero": "d8", "domanda": "8", "risposta": "1" },
-            { "numero": "d10", "domanda": "10", "risposta": "2" },
-            { "numero": "d4", "domanda": "4", "risposta": "3" },
-            { "numero": "d9", "domanda": "9", "risposta": "3" }
+            { number: "d5", question: "5", answer: "1" },
+            { number: "d1", question: "1", answer: "3" },
+            { number: "d7", question: "7", answer: "2" },
+            { number: "d6", question: "6", answer: "1" },
+            { number: "d2", question: "2", answer: "1" },
+            { number: "d3", question: "3", answer: "3" },
+            { number: "d8", question: "8", answer: "1" },
+            { number: "d10", question: "10", answer: "2" },
+            { number: "d4", question: "4", answer: "3" },
+            { number: "d9", question: "9", answer: "3" }
         ];
     }
 };
