@@ -1,8 +1,15 @@
 const path = require('path');
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin');
+const fs = require('fs');
+
+const files = [];
+
+fs.readdirSync('./src/courses')
+  .map(f => path.join(__dirname, 'src/courses', f))
+  .forEach(f => files.push(f));
 
 module.exports = {
-  entry: './src/loader.ts',
+  entry: [path.join(__dirname, './src/index.ts')].concat(files),
   context: __dirname,
   module: {
     rules: [
@@ -22,7 +29,7 @@ module.exports = {
     })]
   },
   output: {
-    filename: '[name].js',
+    filename: 'loader.js',
     path: path.resolve(__dirname, 'dist'),
   },
   mode: process.env.NODE_ENV || 'development',
