@@ -1,6 +1,6 @@
-import Handler from "core/Handler";
-import { ClassOptions } from "types/Classeviva";
-import { buttonPressCallbackData, CredentialsInput } from "../types/Utils";
+import Handler from "@/core/Handler";
+import { ClassOptions } from "@/types/Classeviva";
+import { buttonPressCallbackData, CredentialsInput } from "@/types/Utils";
 
 class CredentialsHandler extends Handler {
     constructor() {

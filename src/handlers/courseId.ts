@@ -1,5 +1,5 @@
-import Handler from "core/Handler";
-import { buttonPressCallbackData } from "../types/Utils";
+import Handler from "@/core/Handler";
+import { buttonPressCallbackData } from "@/types/Utils";
 
 class CourseIdHandler extends Handler {
     skipValidation: boolean;

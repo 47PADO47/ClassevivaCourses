@@ -1,4 +1,4 @@
-import { PingerOptions, Url } from "../types/Pinger";
+import { PingerOptions, Url } from "@/types/Pinger";
   
 class Pinger {
     options: PingerOptions;

@@ -1,4 +1,4 @@
-import CvvCourse from "../core/CvvCourse";
+import CvvCourse from "@/core/CvvCourse";
 
 class Course extends CvvCourse {
     constructor() {

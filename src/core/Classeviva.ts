@@ -1,4 +1,4 @@
-import { ClassOptions, ClassUser, FetchOptions, prodotto, safetyCourseAnswer, safetyCourseAnswerStatus, safetyCourseTarget, safetyCourseTestType } from "../types/Classeviva";
+import { ClassOptions, ClassUser, FetchOptions, prodotto, safetyCourseAnswer, safetyCourseAnswerStatus, safetyCourseTarget, safetyCourseTestType } from "@/types/Classeviva";
 
 class Classeviva {
   private readonly data: ClassOptions;

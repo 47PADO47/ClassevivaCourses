@@ -1,4 +1,4 @@
-import Handler from "core/Handler";
+import Handler from "@/core/Handler";
 
 class ExercisesHandler extends Handler {
     constructor() {

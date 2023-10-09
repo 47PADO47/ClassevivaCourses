@@ -1,5 +1,5 @@
-import { Answer } from "types/Course";
-import CvvCourse from "../core/CvvCourse";
+import { Answer } from "@/types/Course";
+import CvvCourse from "@/core/CvvCourse";
 
 class Course extends CvvCourse {
     constructor() {

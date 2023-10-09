@@ -1,6 +1,6 @@
-import Handler from "core/Handler";
-import { User } from "../types/Config";
-import { buttonPressCallbackData } from "../types/Utils";
+import Handler from "@/core/Handler";
+import { User } from "@/types/Config";
+import { buttonPressCallbackData } from "@/types/Utils";
 
 class KeyHandler extends Handler {
     constructor() {

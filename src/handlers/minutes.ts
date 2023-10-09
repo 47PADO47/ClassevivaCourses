@@ -1,6 +1,6 @@
-import Handler from "core/Handler";
-import { ExtendedElement } from "../types";
-import { safetyCourseTarget } from "../types/Classeviva";
+import Handler from "@/core/Handler";
+import { ExtendedElement } from "@/types";
+import { safetyCourseTarget } from "@/types/Classeviva";
 
 class MinutesHandler extends Handler {
     constructor() {

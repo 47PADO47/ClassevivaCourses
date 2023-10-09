@@ -1,23 +1,23 @@
-import Logger from "core/Logger";
-import Pinger from "core/Pinger";
-import config from "config";
-import Classeviva from "core/Classeviva";
-import CookieManager from "core/CookieManager";
-import KeyManager from "core/KeyManager";
-import NotificationManager from "core/NotificationManager";
-import { Step } from "./types";
-import Handler from "core/Handler";
-import Utils from "core/Utils";
-import Course from "core/CvvCourse";
+import Logger from "@/core/Logger";
+import Pinger from "@/core/Pinger";
+import config from "@/config";
+import Classeviva from "@/core/Classeviva";
+import CookieManager from "@/core/CookieManager";
+import KeyManager from "@/core/KeyManager";
+import NotificationManager from "@/core/NotificationManager";
+import { Step } from "@/types";
+import Handler from "@/core/Handler";
+import Utils from "@/core/Utils";
+import Course from "@/core/CvvCourse";
 
-import CredentialsHandler from "handlers/credentials";
-import ErrorHandler from "handlers/error";
-import CourseIdHandler from "handlers/courseId";
-import MinutesHandler from "handlers/minutes";
-import VideosHandler from "handlers/videos";
-import ExercisesHandler from "handlers/exercises";
-import FinalTestHandler from "handlers/finalTest";
-import UIHandler from "handlers/ui";
+import CredentialsHandler from "@/handlers/credentials";
+import ErrorHandler from "@/handlers/error";
+import CourseIdHandler from "@/handlers/courseId";
+import MinutesHandler from "@/handlers/minutes";
+import VideosHandler from "@/handlers/videos";
+import ExercisesHandler from "@/handlers/exercises";
+import FinalTestHandler from "@/handlers/finalTest";
+import UIHandler from "@/handlers/ui";
 
 const steps: Step[] = [
   {

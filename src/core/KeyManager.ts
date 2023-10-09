@@ -1,4 +1,4 @@
-import { User } from "../types/Config";
+import { User } from "@/types/Config";
 
 class KeyManager {
     #users: User[];

@@ -1,13 +1,13 @@
-import Pinger from "core/Pinger";
-import { Config } from "types/Config";
-import Classeviva from "core/Classeviva";
-import CookieManager from "core/CookieManager";
-import KeyManager from "core/KeyManager";
-import NotificationManager from "core/NotificationManager";
-import CvvCourse from "core/CvvCourse";
-import Utils from "core/Utils";
-import Logger from "core/Logger";
-import UIHandler from "handlers/ui";
+import Pinger from "@/core/Pinger";
+import { Config } from "@/types/Config";
+import Classeviva from "@/core/Classeviva";
+import CookieManager from "@/core/CookieManager";
+import KeyManager from "@/core/KeyManager";
+import NotificationManager from "@/core/NotificationManager";
+import CvvCourse from "@/core/CvvCourse";
+import Utils from "@/core/Utils";
+import Logger from "@/core/Logger";
+import UIHandler from "@/handlers/ui";
 
 declare global {
     interface Window {

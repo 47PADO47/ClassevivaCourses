@@ -1,5 +1,5 @@
-import { ExtendedElement } from "../types";
-import { FormOptions, waitForButtonPressCallback } from "../types/Utils";
+import { ExtendedElement } from "@/types";
+import { FormOptions, waitForButtonPressCallback } from "@/types/Utils";
 
 class Utils {
     constructor() { };

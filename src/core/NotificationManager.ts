@@ -1,4 +1,4 @@
-import { AlertData } from "../types/NotificationManager";
+import { AlertData } from "@/types/NotificationManager";
 
 class NotificationManager {
     constructor() { };

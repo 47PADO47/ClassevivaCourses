@@ -1,5 +1,5 @@
-import { safetyCoursePage } from "types/Classeviva";
-import { CourseInfo, Answer, ICourse } from "../types/Course";
+import { safetyCoursePage } from "@/types/Classeviva";
+import { CourseInfo, Answer, ICourse } from "@/types/Course";
 
 class CvvCourse implements ICourse {
     id: string;
