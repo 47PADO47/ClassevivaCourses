@@ -2,9 +2,8 @@
   "private": true,
   "scripts": {
     "publish": "npx wrangler pages deploy . --project-name=webcvv --branch=production",
-    "preview": "npm run build && npm run config:fill && npx wrangler pages deploy .  --branch=production --project-name=webcvv --commit-dirty=true",
-    "build": "npx webpack --progress --mode none",
-    "config:fill": "node scripts/fillConfig.js"
+    "preview": "npm run build && npx wrangler pages deploy .  --branch=production --project-name=webcvv --commit-dirty=true",
+    "build": "npx webpack --progress --mode none"
   },
   "devDependencies": {
     "ts-loader": "^9.5.0",
