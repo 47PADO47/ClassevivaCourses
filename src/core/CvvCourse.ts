@@ -1,7 +1,7 @@
 import { safetyCoursePage } from "@/types/Classeviva";
 import { CourseInfo, Answer, ICourse } from "@/types/Course";
 
-class CvvCourse implements ICourse {
+abstract class CvvCourse implements ICourse {
     id: string;
     name: string;
     constructor (info: CourseInfo) {
