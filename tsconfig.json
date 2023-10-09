@@ -2,10 +2,10 @@
   "compileOnSave": false,
   "include": ["src/**/*"],
   "compilerOptions": {
-    "baseUrl": "src",
+    "baseUrl": ".",
     "downlevelIteration": true,
     "importHelpers": false,
-    "module": "es2020",
+    "module": "es2022",
     "outDir": "./dist/",
     "sourceMap": false,
     "declaration": false,
@@ -13,9 +13,17 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "noImplicitAny": true,
-    "target": "es6",
-    "lib": ["es2017", "dom"],
+    "target": "es2021",
+    "lib": ["es2021", "dom"],
     "strict": true,
     "allowJs": true,
+    "paths": {
+			"@/*": ["./src/*"],
+			"@root/*": ["./*"]
+		},
+    "types": [
+			"webpack/module",
+    ],
+    "resolveJsonModule": true,
   }
 }
