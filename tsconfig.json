@@ -2,6 +2,7 @@
   "compileOnSave": false,
   "include": ["src/**/*"],
   "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
     "downlevelIteration": true,
     "importHelpers": false,
@@ -23,6 +24,7 @@
 		},
     "types": [
 			"webpack/module",
+      "node",
     ],
     "resolveJsonModule": true,
   }
