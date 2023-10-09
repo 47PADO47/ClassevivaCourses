@@ -24,11 +24,6 @@ jobs:
         env:
           STATIC_HOST: ${{ secrets.STATIC_HOST }}
           NODE_ENV: "production"
-      - name: Fill config 🔧
-        run: npm run config:fill
-        env:
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
-          STATIC_HOST: ${{ secrets.STATIC_HOST }}
       - name: Authorize 🔑
         run: |
           git config user.name PagePublisher
