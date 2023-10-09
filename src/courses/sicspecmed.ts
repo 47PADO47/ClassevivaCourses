@@ -9,4 +9,4 @@ class Course extends CvvCourse {
     }
 };
 
-export default Course;
+export const course = new Course();
