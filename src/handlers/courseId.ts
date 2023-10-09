@@ -1,3 +1,4 @@
+import CvvCourse from "@/core/CvvCourse";
 import Handler from "@/core/Handler";
 import { buttonPressCallbackData } from "@/types/Utils";
 
@@ -42,24 +43,9 @@ class CourseIdHandler extends Handler {
         return true;
     };
 
-    async getCourses(): Promise<string[]> {
-        const res = await fetch(window.config.staticHost + 'dist/courses/index.json');
-        if (!res.ok) {
-            window.logger.error('Could not fetch courses list - ', res.status, res.statusText);
-            return [];
-        };
-
-        const courses: string[] = await res
-            .json()
-            .catch(() => window.logger.error('Could not convert to json course list'));
-
-        window.logger.success(`Loaded a total of ${courses.length} courses`)
-        return courses;
-    }
-
-    getForm(courses: string[]) {
+    getForm(courses: CvvCourse[]) {
         const options = courses
-            .map((c) => `<option value="${c}" ${c === 'sicstu' ? 'select' : ''}>${c}</option>`)
+            .map(({ id, name }) => `<option value="${id}" ${id === 'sicstu' ? 'selected' : ''}>${name}</option>`)
             .join('<br>');
 
         return [
