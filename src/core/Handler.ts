@@ -2,7 +2,7 @@ import { ExtendedElement } from "@/types";
 import { HandlerDisplayOptions, HandlerOptions } from "@/types/Handler";
 import { buttonPressCallbackData, FormOptions } from "@/types/Utils";
 
-class Handler {
+abstract class Handler {
     name: string;
     buttonId: string;
     element?: ExtendedElement<HTMLButtonElement>;
